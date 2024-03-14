@@ -1,16 +1,14 @@
-//
-//  ModuleBetaPresenter.swift
-//  SimpleMVP
-//
-//  Created by Dmitriy Mirovodin on 18.02.2024.
-
 import Foundation
 
 protocol ModuleBetaPresenterProtocol {
     var title: String { get }
-    
-    func viewDidLoad()
+
+//    func viewDidLoad()
+    func viewWillLayoutSubviews()
+    func setSomeParam(completion: () -> (String))
+    func showAlert()
     func requestSave()
+    func tapButton()
 }
 
 final class ModuleBetaPresenter: ModuleBetaPresenterProtocol {
@@ -19,7 +17,7 @@ final class ModuleBetaPresenter: ModuleBetaPresenterProtocol {
     
     private let dataBaseService: DataBaseServiceProtocol
     private let router: ModuleBetaRouterProtocol
-    private let someParam: String
+    private var someParam: String
 
     var title: String { "Module B" }
     
@@ -39,14 +37,23 @@ final class ModuleBetaPresenter: ModuleBetaPresenterProtocol {
     deinit {
         print(">>> ModuleBetaPresenter is deinit")
     }
-    
-    func viewDidLoad() {
+
+    func setSomeParam(completion: () -> (String)) {
+        someParam = completion()
+        viewWillLayoutSubviews()
+    }
+
+    func viewWillLayoutSubviews() {
         let model = ModuleBetaView.Model(
             text: someParam
         )
         view?.update(model: model)
     }
-    
+
+    func showAlert() {
+        router.showAlert(onAction: requestSave)
+    }
+
     func requestSave() {
         dataBaseService.storeData(value: someParam) { [weak self] (result: Result<Void, Error>) in
             guard let self else { return }
@@ -58,5 +65,10 @@ final class ModuleBetaPresenter: ModuleBetaPresenterProtocol {
                 router.showError()
             }
         }
+    }
+
+    func tapButton() {
+        // открыть модуль Gamma и передать туда параметры
+        router.openModuleGamma(with: "params from module Beta", moduleBetaPresenter: self)
     }
 }

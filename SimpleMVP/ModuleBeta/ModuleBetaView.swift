@@ -12,20 +12,29 @@ final class ModuleBetaView: UIView {
         let text: String
     }
 
+    var text: String = ""
+
     private lazy var label: UILabel = {
         let label = UILabel()
         label.font = .boldSystemFont(ofSize: 25)
         label.text = "Waiting..."
         return label
     }()
-    
+
     private lazy var button: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Save", for: .normal)
         button.addTarget(self, action: #selector(onTapped), for: .touchUpInside)
         return button
     }()
-    
+
+    private lazy var buttonShowGammaScreen: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Show GammaScreen", for: .normal)
+        button.addTarget(self, action: #selector(showGammaScreen), for: .touchUpInside)
+        return button
+    }()
+
     private let presenter: ModuleBetaPresenterProtocol
 
     init(presenter: ModuleBetaPresenterProtocol) {
@@ -71,27 +80,38 @@ private extension ModuleBetaView {
     func setupSubviews() {
         addSubview(label)
         addSubview(button)
+        addSubview(buttonShowGammaScreen)
     }
 
     func setupConstraints() {
         label.translatesAutoresizingMaskIntoConstraints = false
         button.translatesAutoresizingMaskIntoConstraints = false
-        
+        buttonShowGammaScreen.translatesAutoresizingMaskIntoConstraints = false
+
         NSLayoutConstraint.activate([
             label.centerYAnchor.constraint(equalTo: self.centerYAnchor),
             label.centerXAnchor.constraint(equalTo: self.centerXAnchor),
-            
-            button.heightAnchor.constraint(equalToConstant: 45.0),
-            button.widthAnchor.constraint(equalToConstant: 150.0),
-            button.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+
+            button.leftAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leftAnchor, constant: 15),
+            button.widthAnchor.constraint(equalToConstant: 100.0),
+
             button.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20.0),
+
+            buttonShowGammaScreen.rightAnchor.constraint(equalTo: self.safeAreaLayoutGuide.rightAnchor, constant: -15),
+            buttonShowGammaScreen.widthAnchor.constraint(equalToConstant: 150.0),
+            buttonShowGammaScreen.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20.0),
         ])
-    }
-    
+    }    
     
     @objc
     func onTapped() {
-        presenter.requestSave()
-    }    
-}
+        presenter.showAlert()
+    }
 
+    @objc
+    func showGammaScreen() {
+        presenter.tapButton()
+    }
+
+    
+}

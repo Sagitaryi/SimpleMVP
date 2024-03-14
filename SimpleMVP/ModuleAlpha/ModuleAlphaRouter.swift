@@ -33,14 +33,12 @@ final class ModuleAlphaRouter: ModuleAlphaRouterProtocol {
     
     // Модуль Alpha показывает модуль Beta и передает в него параметры.
     func openModuleBeta(with param: String) {
-        
         let context = ModuleBetaFactory.Context(
             someParam: param,
             someValue: 100
         )
         
         let viewController = factory.make(context: context)
-        
         root?.navigationController?.pushViewController(viewController, animated: true)
     }
 }

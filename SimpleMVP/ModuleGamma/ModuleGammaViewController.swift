@@ -6,21 +6,21 @@
 
 import UIKit
 
-protocol ModuleBetaViewProtocol: AnyObject {
-    
-    func update(model: ModuleBetaView.Model)
+protocol ModuleGammaViewProtocol: AnyObject {
+
+    func update(model: ModuleGammaView.Model)
     func showError()
     func showEmpty()
     func startLoader()
     func stopLoader()
 }
 
-final class ModuleBetaViewController: UIViewController {
-    
-    private lazy var customView = ModuleBetaView(presenter: presenter)
-    private let presenter: ModuleBetaPresenterProtocol
-    
-    init(presenter: ModuleBetaPresenterProtocol) {
+final class ModuleGammaViewController: UIViewController {
+
+    private lazy var customView = ModuleGammaView(presenter: presenter)
+    private let presenter: ModuleGammaPresenterProtocol
+
+    init(presenter: ModuleGammaPresenterProtocol) {
         self.presenter = presenter
         super.init(nibName: nil, bundle: nil)
     }
@@ -34,20 +34,19 @@ final class ModuleBetaViewController: UIViewController {
         view = customView
     }
 
-    override func viewWillLayoutSubviews() {
+    override func viewDidLoad() {
         title = presenter.title
-        presenter.viewWillLayoutSubviews()
-
+        presenter.viewDidLoad()
     }
 
     deinit {
-        print(">>> ModuleBetaViewController is deinit")
+        print(">>> ModuleGammaViewController is deinit")
     }
 }
 
-extension ModuleBetaViewController: ModuleBetaViewProtocol {
-    
-    func update(model: ModuleBetaView.Model) {
+extension ModuleGammaViewController: ModuleGammaViewProtocol {
+
+    func update(model: ModuleGammaView.Model) {
         customView.update(model: model)
     }
     

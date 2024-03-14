@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B99C2112BF89DF10097AB07 /* ModuleGammaRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99C20E2BF89DF10097AB07 /* ModuleGammaRouter.swift */; };
+		5B99C2122BF89DF10097AB07 /* ModuleGammaFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99C20F2BF89DF10097AB07 /* ModuleGammaFactory.swift */; };
+		5B99C2132BF89DF10097AB07 /* ModuleGammaPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99C20D2BF89DF10097AB07 /* ModuleGammaPresenter.swift */; };
+		5B99C2142BF89DF10097AB07 /* ModuleGammaView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99C2102BF89DF10097AB07 /* ModuleGammaView.swift */; };
+		5B99C2152BF89DF10097AB07 /* ModuleGammaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B99C20C2BF89DF10097AB07 /* ModuleGammaViewController.swift */; };
+		5BB921122BFE040F004ACA49 /* DataStorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BB921112BFE040E004ACA49 /* DataStorageService.swift */; };
 		8E7D7EE42B81F2A9004D13D3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E7D7EE32B81F2A9004D13D3 /* AppDelegate.swift */; };
 		8E7D7EED2B81F2A9004D13D3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8E7D7EEC2B81F2A9004D13D3 /* Assets.xcassets */; };
 		8E7D7EF02B81F2A9004D13D3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8E7D7EEE2B81F2A9004D13D3 /* LaunchScreen.storyboard */; };
@@ -26,6 +32,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5B99C20C2BF89DF10097AB07 /* ModuleGammaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGammaViewController.swift; sourceTree = "<group>"; };
+		5B99C20D2BF89DF10097AB07 /* ModuleGammaPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGammaPresenter.swift; sourceTree = "<group>"; };
+		5B99C20E2BF89DF10097AB07 /* ModuleGammaRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGammaRouter.swift; sourceTree = "<group>"; };
+		5B99C20F2BF89DF10097AB07 /* ModuleGammaFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGammaFactory.swift; sourceTree = "<group>"; };
+		5B99C2102BF89DF10097AB07 /* ModuleGammaView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleGammaView.swift; sourceTree = "<group>"; };
+		5BB921112BFE040E004ACA49 /* DataStorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataStorageService.swift; sourceTree = "<group>"; };
 		8E7D7EE02B81F2A9004D13D3 /* SimpleMVP.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SimpleMVP.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8E7D7EE32B81F2A9004D13D3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8E7D7EEC2B81F2A9004D13D3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -57,6 +69,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B99C20B2BF89DF10097AB07 /* ModuleGamma */ = {
+			isa = PBXGroup;
+			children = (
+				5B99C20D2BF89DF10097AB07 /* ModuleGammaPresenter.swift */,
+				5B99C20F2BF89DF10097AB07 /* ModuleGammaFactory.swift */,
+				5B99C20E2BF89DF10097AB07 /* ModuleGammaRouter.swift */,
+				5B99C2102BF89DF10097AB07 /* ModuleGammaView.swift */,
+				5B99C20C2BF89DF10097AB07 /* ModuleGammaViewController.swift */,
+			);
+			path = ModuleGamma;
+			sourceTree = "<group>";
+		};
 		8E7D7ED72B81F2A9004D13D3 = {
 			isa = PBXGroup;
 			children = (
@@ -80,6 +104,7 @@
 				8E7D7EF72B81F37B004D13D3 /* Services */,
 				8E7D7EFC2B81F3FC004D13D3 /* ModuleAlpha */,
 				8E7D7EFD2B81F40B004D13D3 /* ModuleBeta */,
+				5B99C20B2BF89DF10097AB07 /* ModuleGamma */,
 				8E7D7EE32B81F2A9004D13D3 /* AppDelegate.swift */,
 				8E7D7EEC2B81F2A9004D13D3 /* Assets.xcassets */,
 				8E7D7EEE2B81F2A9004D13D3 /* LaunchScreen.storyboard */,
@@ -93,6 +118,7 @@
 			children = (
 				8E7D7EF82B81F37B004D13D3 /* RestService.swift */,
 				8E7D7EF92B81F37B004D13D3 /* DataBaseService.swift */,
+				5BB921112BFE040E004ACA49 /* DataStorageService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -201,18 +227,24 @@
 			files = (
 				8E7D7F122B822778004D13D3 /* ModuleAlphaPresenter.swift in Sources */,
 				8E7D7F042B81F467004D13D3 /* ModuleBetaView.swift in Sources */,
+				5B99C2142BF89DF10097AB07 /* ModuleGammaView.swift in Sources */,
 				8E7D7F052B81F467004D13D3 /* ModuleBetaViewController.swift in Sources */,
 				8E7D7F0D2B8226FE004D13D3 /* ModuleBetaFactory.swift in Sources */,
+				5B99C2112BF89DF10097AB07 /* ModuleGammaRouter.swift in Sources */,
 				8E7D7F002B81F438004D13D3 /* ModuleAlphaViewController.swift in Sources */,
 				8E7D7EE42B81F2A9004D13D3 /* AppDelegate.swift in Sources */,
+				5B99C2152BF89DF10097AB07 /* ModuleGammaViewController.swift in Sources */,
 				8E7D7F0B2B822631004D13D3 /* ModuleBetaRouter.swift in Sources */,
 				8E7D7F012B81F438004D13D3 /* ModuleAlphaView.swift in Sources */,
 				8E7D7F072B81F47A004D13D3 /* ModuleAlphaFactory.swift in Sources */,
 				8E7D7EFB2B81F37B004D13D3 /* DataBaseService.swift in Sources */,
 				8E7D7F102B822718004D13D3 /* AlertModuleFactory.swift in Sources */,
+				5B99C2122BF89DF10097AB07 /* ModuleGammaFactory.swift in Sources */,
+				5BB921122BFE040F004ACA49 /* DataStorageService.swift in Sources */,
 				8E7D7F092B82260F004D13D3 /* ModuleAlphaRouter.swift in Sources */,
 				8E7D7F142B8227CD004D13D3 /* ModuleBetaPresenter.swift in Sources */,
 				8E7D7EFA2B81F37B004D13D3 /* RestService.swift in Sources */,
+				5B99C2132BF89DF10097AB07 /* ModuleGammaPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
