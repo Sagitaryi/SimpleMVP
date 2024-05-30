@@ -15,24 +15,25 @@ final class ModuleGammaFactory {
         let someValue: Int
     }
 
-    func make(context: Context, moduleBetaPresenter: ModuleBetaPresenterProtocol) -> UIViewController {
+    func make(context: Context, completion: @escaping (String) ->()) -> UIViewController {
         /// Только Factory может наполнять Presenter реальными сервисами и другими зависимостями
         let dataBaseService = DataBaseService()
-        
+
         let router = ModuleGammaRouter(
-            alertFactory: AlertModuleFactory(), moduleBetaPresenter: moduleBetaPresenter
+            alertFactory: AlertModuleFactory()
         )
-        
+
         let presenter = ModuleGammaPresenter(
             someParam: context.someParam,
             dataBaseService: dataBaseService,
             router: router
         )
         let vc = ModuleGammaViewController(presenter: presenter)
-        
+
         presenter.view = vc
+        presenter.completion = completion
         router.setRootViewController(root: vc)
-        
+
         return vc
     }
 }

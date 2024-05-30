@@ -34,10 +34,9 @@ final class ModuleBetaViewController: UIViewController {
         view = customView
     }
 
-    override func viewWillLayoutSubviews() {
+    override func viewDidLoad() {
         title = presenter.title
-        presenter.viewWillLayoutSubviews()
-
+        presenter.viewDidLoad()
     }
 
     deinit {

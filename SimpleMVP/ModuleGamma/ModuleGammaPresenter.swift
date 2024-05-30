@@ -8,14 +8,14 @@ import Foundation
 
 protocol ModuleGammaPresenterProtocol {
     var title: String { get }
-    
+    var completion: ((String) -> ())? { get }
     func viewDidLoad()
     func getName(name: String)
 }
 
 final class ModuleGammaPresenter: ModuleGammaPresenterProtocol {
+    var completion: ((String) -> ())?
     weak var view: ModuleGammaViewProtocol?
-
     private let dataBaseService: DataBaseServiceProtocol
     private let router: ModuleGammaRouterProtocol
     private let someParam: String
@@ -43,9 +43,7 @@ final class ModuleGammaPresenter: ModuleGammaPresenterProtocol {
     }
 
     func getName(name: String) {
-        router.moduleBetaPresenter.setSomeParam {
-            return name
-        }
+        completion?(name)
     }
 
     deinit {

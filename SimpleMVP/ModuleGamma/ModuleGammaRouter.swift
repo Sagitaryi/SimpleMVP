@@ -7,7 +7,6 @@
 import UIKit
 
 protocol ModuleGammaRouterProtocol {
-    var moduleBetaPresenter: ModuleBetaPresenterProtocol { get }
     // Устанавливаем основной UIViewController
     func setRootViewController(root: UIViewController)
 }
@@ -18,11 +17,8 @@ final class ModuleGammaRouter: ModuleGammaRouterProtocol {
 
     private let alertFactory: AlertModuleFactory
 
-    let moduleBetaPresenter: ModuleBetaPresenterProtocol
-
-    init(alertFactory: AlertModuleFactory, moduleBetaPresenter: ModuleBetaPresenterProtocol) {
+    init(alertFactory: AlertModuleFactory) {
         self.alertFactory = alertFactory
-        self.moduleBetaPresenter = moduleBetaPresenter
     }
 
     func setRootViewController(root: UIViewController) {

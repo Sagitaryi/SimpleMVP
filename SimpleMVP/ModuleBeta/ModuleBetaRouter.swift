@@ -14,7 +14,7 @@ protocol ModuleBetaRouterProtocol {
     func showAlert(onAction: @escaping () -> () )
     func showSuccess()
     func showError()
-    func openModuleGamma(with param: String, moduleBetaPresenter: ModuleBetaPresenterProtocol)
+    func openModuleGamma(with param: String, completion: @escaping (String) -> ())
 }
 
 final class ModuleBetaRouter: ModuleBetaRouterProtocol {
@@ -33,13 +33,13 @@ final class ModuleBetaRouter: ModuleBetaRouterProtocol {
     }
 
     // Модуль Beta показывает модуль Gamma и передает в него параметры.
-    func openModuleGamma(with param: String, moduleBetaPresenter: ModuleBetaPresenterProtocol) {
+    func openModuleGamma(with param: String, completion: @escaping (String) -> ()) {
         let context = ModuleGammaFactory.Context(
             someParam: param,
             someValue: 50
         )
 
-        let viewController = factory.make(context: context, moduleBetaPresenter: moduleBetaPresenter)
+        let viewController = factory.make(context: context, completion: completion)
         root?.navigationController?.pushViewController(viewController, animated: true)
     }
 

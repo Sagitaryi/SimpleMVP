@@ -3,16 +3,14 @@ import Foundation
 protocol ModuleBetaPresenterProtocol {
     var title: String { get }
 
-//    func viewDidLoad()
-    func viewWillLayoutSubviews()
-    func setSomeParam(completion: () -> (String))
+    func viewDidLoad()
+    func setNameFromGammaTextField(text: String )
     func showAlert()
     func requestSave()
     func tapButton()
 }
 
-final class ModuleBetaPresenter: ModuleBetaPresenterProtocol {
-    
+final class ModuleBetaPresenter: ModuleBetaPresenterProtocol {    
     weak var view: ModuleBetaViewProtocol?
     
     private let dataBaseService: DataBaseServiceProtocol
@@ -38,12 +36,12 @@ final class ModuleBetaPresenter: ModuleBetaPresenterProtocol {
         print(">>> ModuleBetaPresenter is deinit")
     }
 
-    func setSomeParam(completion: () -> (String)) {
-        someParam = completion()
-        viewWillLayoutSubviews()
+    func setNameFromGammaTextField(text: String ) {
+        let model = ModuleBetaView.Model(text: text)
+        view?.update(model: model)
     }
 
-    func viewWillLayoutSubviews() {
+    func viewDidLoad() {
         let model = ModuleBetaView.Model(
             text: someParam
         )
@@ -69,6 +67,6 @@ final class ModuleBetaPresenter: ModuleBetaPresenterProtocol {
 
     func tapButton() {
         // открыть модуль Gamma и передать туда параметры
-        router.openModuleGamma(with: "params from module Beta", moduleBetaPresenter: self)
+        router.openModuleGamma(with: "params from module Beta", completion: setNameFromGammaTextField(text:))
     }
 }
